@@ -1,4 +1,4 @@
-const { getCredentials, postCredentials  } = require('../utils/axios')
+const { getCredentials, postCredentials, postQueue  } = require('../utils/axios')
 
 /**
  * @function getStrampi
@@ -32,7 +32,23 @@ const postData = async (req, res) => {
   }
 }
 
+/**
+ * @function postStrampi
+ * @description Controller for GET /api/v1/lacchain/encrypt
+ * @param {Object} res
+ */
+ const postNewRegistry = async (req, res) => {
+  try {
+    // peticion post a strampi
+    const data = await postQueue(req.body)
+    res.send(data)
+  } catch (err) {
+    console.error(`there was an error: ${err}`)
+  }
+}
+
 module.exports = {
   getData,
   postData,
+  postNewRegistry
 }
