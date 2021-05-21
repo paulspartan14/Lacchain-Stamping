@@ -1,0 +1,13 @@
+  
+version: '3'
+
+services:
+  api:
+    build:
+      context: .
+    image: api-lacchain:v1.0
+    container_name: api-lacchain
+    ports:
+      - ${PORT}:${PORT}
+    command: npm start
+    env_file: ./.env
