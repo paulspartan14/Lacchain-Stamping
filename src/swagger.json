@@ -1,0 +1,135 @@
+{
+  "swagger": "2.0",
+  "info": {
+      "title": "API Lacchain TanTan Solutions",
+      "description": "Los datos importantes son:\n\ntrxid - Sirve para encimar un nuevo registro o para validar la información que se encripto. \n\nlacchainId - Registro de la transacción y la puedes verificar en: https://explorer.lacchain.net/",
+      "version": "1.0"
+  },
+  "produces": ["application/json"],
+  "host": "localhost:3300",
+  "basePath": "/api/v1/lacchain",
+  "paths": {
+      "/encrypt": {            
+          "post": {
+              "summary": "Encrypt info and return lacchainId & trxId",
+              "tags": ["/encrypt"],
+              "description": "se envian los datos, y se suben a la red lacchain y esto regresa un identificador unico(lacchainId) y una clave del registro(trxId)",
+              "parameters": [{
+                      "in": "body",
+                      "required": true,
+                      "name": "body",
+                      "description": "Object that needs to be added",
+                      "schema": {
+                          "properties": {
+                              "matricula": {
+                                  "type": "string"
+                              },
+                              "nombres": {
+                                  "type": "string"
+                              },
+                              "apellidos": {
+                                "type": "string"
+                              },
+                              "carrera": {
+                                "type": "string"
+                              },
+                              "semestre": {
+                                "type": "string"
+                              },
+                              "institucion": {
+                                "type": "string"
+                              },
+                              "credencial": {
+                                "type": "string"
+                              },
+                              "curp": {
+                                "type": "string"
+                              }                              
+                          }
+                      }
+                  }
+              ],
+              "responses": {
+                  "200": {
+                  }
+              }
+          }
+      },
+      "/queue": {            
+        "post": {
+            "summary": "Queue info and return new trxid",
+            "tags": ["/queue"],
+            "description": "enlaza los datos al trxid anterior, se suben a la red lacchain. Esto regresa un identificador unico(lacchainId) y una nueva clave del registro(trxId)",
+            "parameters": [{
+                    "in": "body",
+                    "required": true,
+                    "name": "body",
+                    "description": "Object that needs to be added",
+                    "schema": {
+                        "properties": {
+                            "trxid": {
+                                "type": "string"
+                            },
+                            "matricula": {
+                                "type": "string"
+                            },
+                            "nombres": {
+                                "type": "string"
+                            },
+                            "apellidos": {
+                              "type": "string"
+                            },
+                            "carrera": {
+                              "type": "string"
+                            },
+                            "semestre": {
+                              "type": "string"
+                            },
+                            "institucion": {
+                              "type": "string"
+                            },
+                            "credencial": {
+                              "type": "string"
+                            },
+                            "curp": {
+                              "type": "string"
+                            }                              
+                        }
+                    }
+                }
+            ],
+            "responses": {
+                "200": {
+                }
+            }
+        }
+    },
+    "/validate": {            
+      "post": {
+          "summary": "Validate info with trxid",
+          "tags": ["/validate"],
+          "description": "valida la información encriptada pasandole como parametro el trxid",
+          "parameters": [{
+                  "in": "body",
+                  "required": true,
+                  "name": "body",
+                  "description": "Object that needs to be added",
+                  "schema": {
+                      "properties": {
+                          "trxid": {
+                              "type": "string"
+                          }                          
+                      }
+                  }
+              }
+          ],
+          "responses": {
+              "200": {
+              }
+          }
+      }
+  }
+
+
+  }
+}
