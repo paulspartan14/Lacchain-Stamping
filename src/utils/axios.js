@@ -54,6 +54,10 @@ const postCredentials = async (req) => {
             'password': PASS_STAMPI
         }
     })
+    // agregando el hash a la respuesta
+    const response = result.data
+    response.hash = evidence
+    
     return result.data
 }
 
