@@ -10,7 +10,7 @@ router.get('/docs', swaggerUi.setup(swaggerDocument))
 
 // routes app
 router.get('/', (req, res) => {
-  res.send({ message: 'Welcome Home!' })
+  res.send({ message: 'Welcome Home!, watch documentation on http://localhost:3300/api/v1/docs ' })
 })
 
 router.use('/lacchain', routerStrampi)
